@@ -72,6 +72,45 @@ app.get("/api/products/:id", async (req, res) => {
   }
 });
 
+//Route DELETE
+app.delete("/api/products/:id", async (req, res) => {
+  try {
+    const deletedProduct = await Product.findByIdAndDelete(req.params.id);
+    if (!deletedProduct) {
+      return res.status(404).json({ message: "Produit non trouvé" });
+    }
+    res.json({ message: "Produit supprimé avec succès" });
+  } catch (error) {
+    res.status(500).json({ message: "Erreur serveur", error: error.message });
+  }
+});
+
+// Route PUT (mise à jour produit)
+app.put("/api/products/:id", upload.single("image"), async (req, res) => {
+  try {
+    const { brand, name, price } = req.body;
+    const updatedFields = { brand, name, price };
+
+    if (req.file) {
+      updatedFields.image = `/uploads/${req.file.filename}`;
+    }
+
+    const updatedProduct = await Product.findByIdAndUpdate(
+      req.params.id,
+      updatedFields,
+      { new: true } // pour retourner le produit mis à jour
+    );
+
+    if (!updatedProduct) {
+      return res.status(404).json({ message: "Produit non trouvé" });
+    }
+
+    res.json({ message: "Produit mis à jour", product: updatedProduct });
+  } catch (error) {
+    res.status(500).json({ message: "Erreur serveur", error: error.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
 });
