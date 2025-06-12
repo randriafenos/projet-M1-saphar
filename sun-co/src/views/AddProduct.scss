@@ -1,0 +1,173 @@
+// .add-product-container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: flex-start;
+//     gap: 2rem;
+//     padding: 2rem;
+//     max-width: 900px;
+//     margin: auto;
+//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//   }
+.add-product-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+
+  /* 🔽 Modifications */
+  width: 100vw;           /* Prend toute la largeur visible */
+  max-width: 100%;        /* Empêche de dépasser la largeur */
+  overflow-x: hidden;     /* Évite tout scroll horizontal */
+  
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box; /* Important pour gérer padding + largeur */
+}
+  
+  .product-form {
+    flex: 1;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .product-form h2 {
+    margin-bottom: 1rem;
+    color: #1976d2;
+    font-weight: 700;
+  }
+  
+  /* Floating labels container */
+  .input-group {
+    position: relative;
+    margin-top: 1.2rem;
+  
+    input[type="text"],
+    input[type="number"],
+    input[type="file"] {
+      width: 100%;
+      padding: 1.2rem 1rem 0.4rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1.5px solid #ccc;
+      background: transparent;
+      transition: border-color 0.3s;
+    }
+  
+    input[type="file"] {
+      padding: 1.2rem 1rem 1rem;
+      cursor: pointer;
+    }
+  
+    input:focus {
+      outline: none;
+      border-color: #1976d2;
+    }
+  
+    /* Label styling */
+    label {
+      position: absolute;
+      top: 1.1rem;
+      left: 1rem;
+      color: #999;
+      font-weight: 600;
+      font-size: 1rem;
+      pointer-events: none;
+      background: white;
+      padding: 0 0.25rem;
+      transition: 0.3s ease all;
+    }
+  
+    /* When input is focused or filled */
+    &.filled label,
+    input:focus + label {
+      top: -0.5rem;
+      left: 0.8rem;
+      font-size: 0.75rem;
+      color: #1976d2;
+      font-weight: 700;
+    }
+  }
+  
+  /* Specific style for file input label */
+  .file-label {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  /* Gradient button */
+  .gradient-btn {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+    background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+    box-shadow: 0 4px 10px rgb(25 118 210 / 0.4);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .gradient-btn:hover {
+    background: linear-gradient(135deg, #1565c0 0%, #1e88e5 100%);
+  }
+  
+  /* Preview and table styles */
+  .product-preview {
+    flex: 1;
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.05);
+    font-size: 0.9rem;
+    color: #333;
+    max-height: 500px; /* Ajuste selon ton besoin */
+  overflow-y: auto;
+  }
+  
+  .product-preview h3 {
+    margin-bottom: 1rem;
+    color: #444;
+    font-weight: 600;
+  }
+  
+  .product-preview table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .product-preview th,
+  .product-preview td {
+    border: 1px solid #ddd;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: middle;
+    position: sticky;
+  top: 0;
+  background: #e3f2fd;
+  z-index: 1;
+  }
+  
+  .product-preview th {
+    background: #e3f2fd;
+    color: #1976d2;
+    font-weight: 700;
+  }
+  
+  .preview-thumb {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgb(25 118 210 / 0.3);
+  }
+  
+  
