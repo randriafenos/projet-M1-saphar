@@ -91,7 +91,7 @@ function AddProduct() {
   useEffect(() => {
     fetchProducts();
   }, []);
-
+//delete
   const handleDelete = async (id) => {
     const confirmed = window.confirm("Supprimer ce produit ?");
     if (!confirmed) return;
